@@ -133,6 +133,13 @@
   color: #f39c12;
 }
 
+[data-page] {
+  display: none;
+}
+
+[data-page].active {
+  display: block;
+}
 
 
 /*-----------------------------------*\

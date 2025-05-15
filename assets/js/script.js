@@ -157,3 +157,17 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+const navLinks = document.querySelectorAll('[data-nav-link]');
+const pages = document.querySelectorAll('[data-page]');
+
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    const targetPage = link.getAttribute('data-nav-link');
+
+    pages.forEach(page => {
+      page.classList.remove('active');
+    });
+
+    document.querySelector(`[data-page="${targetPage}"]`).classList.add('active');
+  });
+});

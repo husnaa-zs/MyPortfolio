@@ -156,7 +156,7 @@
             <div class="contact-info">
               <p class="contact-title">Birthday</p>
 
-              <time datetime="1982-06-23">June 23, 1982</time>
+              <time datetime="1982-06-23">19 April</time>
             </div>
 
           </li>
@@ -268,6 +268,8 @@
         - #ABOUT
       -->
 
+      <article class="blog" data-page="blog"> ... </article>
+
       <article class="about  active" data-page="about">
 
         <header>
@@ -355,7 +357,7 @@
             <li class="service-item">
               
               <div class="service-icon-box">
-                    <a href="https://husnamaszani.myportfolio.com/welcome" class="service-link">
+                <a href="https://husnamaszani.myportfolio.com/welcome" class="service-link"></a>
                 <img src="assets/images/icon-photo.svg" alt="camera icon" width="40">
               </div>
 
@@ -719,6 +721,8 @@
         - #PORTFOLIO
       -->
 
+
+
       <article class="portfolio" data-page="portfolio">
 
         <header>
@@ -1071,7 +1075,7 @@
       <!--
         - #CONTACT
       -->
-
+     
       <article class="contact" data-page="contact">
 
         <header>
@@ -1194,7 +1198,48 @@ const swalDark = document.getElementById('swal-dark');
   });
 </script>
 
+<script>
+  // === NAVBAR CLICK LOGIC ===
+const navLinks = document.querySelectorAll("[data-nav-link]");
+const pages = document.querySelectorAll("[data-page]");
 
+navLinks.forEach((link, index) => {
+  link.addEventListener("click", () => {
+    // remove 'active' from all
+    navLinks.forEach(l => l.classList.remove("active"));
+    pages.forEach(p => p.classList.remove("active"));
+
+    // add 'active' to clicked
+    link.classList.add("active");
+    pages[index].classList.add("active");
+
+    // ✅ save selected page to localStorage
+    const selectedPage = pages[index].getAttribute("data-page");
+    localStorage.setItem("selectedPage", selectedPage);
+  });
+});
+
+// === ON PAGE LOAD: check localStorage and show selected page
+window.addEventListener("DOMContentLoaded", () => {
+  const savedPage = localStorage.getItem("selectedPage");
+
+  if (savedPage) {
+    navLinks.forEach((link, index) => {
+      const page = pages[index];
+      if (page.getAttribute("data-page") === savedPage) {
+        // Reset all first
+        navLinks.forEach(l => l.classList.remove("active"));
+        pages.forEach(p => p.classList.remove("active"));
+
+        // Then apply active
+        link.classList.add("active");
+        page.classList.add("active");
+      }
+    });
+  }
+});
+
+</script>
 
   <script src="./assets/js/script.js"></script>
 

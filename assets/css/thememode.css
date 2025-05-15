@@ -209,6 +209,13 @@ body { background: var(--smoky-black); }
 
 
 
+[data-page] {
+  display: none;
+}
+
+[data-page].active {
+  display: block;
+}
 
 
 /*-----------------------------------*\
