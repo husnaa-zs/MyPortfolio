@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 
 <head>
   <meta charset="UTF-8">
@@ -1091,8 +1091,12 @@
        <section class="contact-form">
   <h3 class="h3 form-title">Contact Form</h3>
 
-  <form id="contactForm">
+  <form id="contactForm"
+        action="https://formspree.io/f/mbloqbzn"
+        method="POST">
     <div class="input-wrapper">
+
+
       <!-- ‹— Correct type here —› -->
       <input type="text" name="fullname" class="form-input" placeholder="Full name" required>
       <input type="email" name="email" class="form-input" placeholder="Email address" required>
@@ -1238,7 +1242,32 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 </script>
+</script>
+    <script>
+      const form = document.getElementById('contactForm');
 
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault(); // prevent default form refresh
+
+        const formData = new FormData(form);
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          alert("🎉 Message sent! Thank you!");
+          form.reset(); // clear the form
+        } else {
+          alert("❌ Oops! Something went wrong.");
+        }
+      });
+    </script>
+
+    </script>
   <script src="./assets/js/script.js"></script>
 
   <!--
