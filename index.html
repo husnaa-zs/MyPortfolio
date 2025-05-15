@@ -148,18 +148,17 @@
           </li>
 
           <li class="contact-item">
-
             <a href="https://husnamaszani.myportfolio.com/" target="_blank" class="contact-link" style="text-decoration: none; color: inherit;">
+
               <div class="icon-box">
                 <ion-icon name="calendar-outline"></ion-icon>
               </div>
 
               <div class="contact-info">
-                <p class="contact-title">Creative Design</p>
-                <time datetime="1982-06-23">Portfolio</time>
-              </div>
-            </a>
+                <p class="contact-title">Creative</p>
 
+                <a href="tel:60-0136433436" class="contact-link">Portfolio</a>
+              </div>
 
           </li>
 
@@ -713,15 +712,9 @@
 
       </article>
 
-
-
-
-
       <!--
-        - #PORTFOLIO
-      -->
-
-
+             - #PORTFOLIO
+           -->
 
       <article class="portfolio" data-page="portfolio">
 
@@ -859,7 +852,7 @@
               </a>
             </li>
 
-            
+
 
             <li class="project-item  active" data-filter-item data-category="web development">
               <a href="https://github.com/husnaa-zs/LaundryStreamlining">
@@ -881,34 +874,34 @@
 
             <li class="project-item  active" data-filter-item data-category="mobile applications">
               <a href="#">
-<div class="under_construction">
- 
+                <div class="under_construction">
 
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
 
-                  <img src="./assets/images/grocer.png" alt="task manager" loading="lazy">
-                </figure>
-</div>
+                  <figure class="project-img">
+                    <div class="project-item-icon-box">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+
+                    <img src="./assets/images/grocer.png" alt="task manager" loading="lazy">
+                  </figure>
+                </div>
                 <h3 class="project-title">Grocery App</h3>
 
                 <p class="project-category">Mobile Applications</p>
 
               </a>
             </li>
-             <li class="project-item  active" data-filter-item data-category="mobile applications">
+            <li class="project-item  active" data-filter-item data-category="mobile applications">
               <a href="#">
-                  <div class="under_construction">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
+                <div class="under_construction">
+                  <figure class="project-img">
+                    <div class="project-item-icon-box">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </div>
 
-                  <img src="./assets/images/imaan.png" alt="task manager" loading="lazy">
-                </figure>
-</div>
+                    <img src="./assets/images/imaan.png" alt="task manager" loading="lazy">
+                  </figure>
+                </div>
                 <h3 class="project-title">Imaan App</h3>
 
                 <p class="project-category">Mobile Applications</p>
@@ -918,15 +911,15 @@
 
             <li class="project-item  active" data-filter-item data-category="web development">
               <a href="#">
-                  <div class="under_construction">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
+                <div class="under_construction">
+                  <figure class="project-img">
+                    <div class="project-item-icon-box">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </div>
 
-                  <img src="./assets/images/task.png" alt="arrival" loading="lazy">
-                </figure>
-</div>
+                    <img src="./assets/images/task.png" alt="arrival" loading="lazy">
+                  </figure>
+                </div>
                 <h3 class="project-title">Study Task</h3>
 
                 <p class="project-category">Web development</p>
@@ -939,7 +932,6 @@
         </section>
 
       </article>
-
 
 
 
@@ -1189,7 +1181,39 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 </script>
-</script>
+    <script>
+      // filter variables
+const filterItems = document.querySelectorAll("[data-filter-item]");
+const filterButtons = document.querySelectorAll("[data-filter-btn]");
+
+const filterFunc = function (selectedValue) {
+  for (let i = 0; i < filterItems.length; i++) {
+    if (selectedValue === "all") {
+      filterItems[i].classList.add("active");
+    } else if (selectedValue === filterItems[i].dataset.category) {
+      filterItems[i].classList.add("active");
+    } else {
+      filterItems[i].classList.remove("active");
+    }
+  }
+};
+
+// add click event listeners
+filterButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    // get clicked button text
+    const selectedValue = button.textContent.toLowerCase().trim();
+
+    // update active button class
+    filterButtons.forEach(btn => btn.classList.remove("active"));
+    button.classList.add("active");
+
+    // call filter function
+    filterFunc(selectedValue);
+  });
+});
+
+    </script>
     <script>
       const form = document.getElementById('contactForm');
 
