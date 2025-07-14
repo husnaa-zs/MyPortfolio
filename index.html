@@ -233,7 +233,7 @@
           </li>
 
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Portfolio</button>
+            <button class="navbar-link" data-nav-link>Projects</button>
           </li>
 
           <li class="navbar-item">
@@ -719,7 +719,7 @@
       <article class="portfolio" data-page="portfolio">
 
         <header>
-          <h2 class="h3 article-title">Portfolio</h2>
+          <h2 class="h3 article-title">Projects</h2>
         </header>
 
         <section class="projects">
@@ -921,6 +921,24 @@
                   </figure>
                 </div>
                 <h3 class="project-title">Study Task</h3>
+
+                <p class="project-category">Web development</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="web development">
+              <a href="https://github.com/husnaa-zs/Online-Web-Bookstore">
+
+                  <figure class="project-img">
+                    <div class="project-item-icon-box">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+
+                    <img src="./assets/images/bookstore.png" alt="arrival" loading="lazy">
+                  </figure>
+
+                <h3 class="project-title">Online Bookstore</h3>
 
                 <p class="project-category">Web development</p>
 
@@ -1201,7 +1219,8 @@ const filterFunc = function (selectedValue) {
 // add click event listeners
 filterButtons.forEach(button => {
   button.addEventListener("click", () => {
-    // get clicked button text
+    // get clicked button
+
     const selectedValue = button.textContent.toLowerCase().trim();
 
     // update active button class
